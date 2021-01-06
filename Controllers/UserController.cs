@@ -24,7 +24,7 @@ namespace testexcel.Controllers
         [Obsolete]
         public IActionResult Index(IFormFile file, [FromServices] IHostingEnvironment hostingEnvironment)
         {
-            string fileName = $"{hostingEnvironment.WebRootPath}\\files\\{file.FileName}";
+            string fileName = $"{hostingEnvironment.WebRootPath}/files/{file.FileName}";
             using (FileStream fileStream = System.IO.File.Create(fileName))
             {
                 file.CopyTo(fileStream);
@@ -38,7 +38,7 @@ namespace testexcel.Controllers
         private List<User> GetUserList(string fName)
         {
             List<User> users = new List<User>();
-            var fileName = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\files"}" + "\\" + fName;
+            var fileName = $"{Directory.GetCurrentDirectory()}{@"/wwwroot/files"}" + "/" + fName;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             using (var stream = System.IO.File.Open(fileName, FileMode.Open, FileAccess.Read))
             {
